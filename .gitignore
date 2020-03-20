@@ -1,0 +1,10 @@
+# Compiled Lua sources
+luac.out
+
+# luarocks build files
+*.rock
+*.zip
+*.tar.gz
+
+# Ignore OS files
+.DS_Store
