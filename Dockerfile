@@ -1,5 +1,5 @@
 ARG kong_version
-FROM kong:${kong_version}
+FROM kong:${kong_version} as base
 
 USER root
 
@@ -8,7 +8,8 @@ ADD ./src ./src
 
 RUN luarocks make && luarocks pack kong-plugin-reject-access
 
-RUN mkdir /artefact && mv ./kong-plugin-reject-access-1.0-0.all.rock /artefact/kong-plugin-reject-access-1.0-0.all.rock
 RUN rm kong-plugin-reject-access-1.0-0.rockspec && rm -r src
 
-USER kong
+FROM tianon/true
+
+COPY --from=base ./kong-plugin-jwt-crafter-1.2-0.all.rock /
