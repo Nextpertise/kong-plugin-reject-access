@@ -12,4 +12,4 @@ RUN rm kong-plugin-reject-access-1.0-0.rockspec && rm -r src
 
 FROM tianon/true
 
-COPY --from=base ./kong-plugin-jwt-crafter-1.2-0.all.rock /
+COPY --from=base ./kong-plugin-reject-access-1.0-0.all.rock /
